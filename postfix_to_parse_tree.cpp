@@ -2,6 +2,7 @@
 
 using namespace std;
 
+string postfix;
 
 struct node{
 	struct node* parent;
@@ -63,13 +64,27 @@ struct node* make_parse_tree(string s){
 	}
 
 	node* root = st.top();
-	return root
+	return root;
 }
 
+void traverse_parse(node* cur){
+
+	if(cur==NULL){
+		return;
+	}
+
+	node* left=cur->left_child;
+	node* right=cur->right_child;
+
+    traverse_parse(right);
+    cout<<cur->val;
+	traverse_parse(left);
+	
+
+}
 int main(){
 
-	string postfix="pqp~>V~r^";
-
+	postfix="pqp~>V~r^";
 	node* root=make_parse_tree(postfix);
-	
+	traverse_parse(root);
 }
