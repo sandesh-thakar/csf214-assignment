@@ -1,8 +1,5 @@
 #include<bits/stdc++.h>
-
 using namespace std;
-
-string postfix;
 
 struct node{
 	struct node* parent;
@@ -20,7 +17,7 @@ struct node* newNode(char val) {
   return(node); 
 } 
 
-struct node* make_parse_tree(string s){
+struct node* postfix_to_parse_tree(string postfix){
 
 	stack<node*>st;
 
@@ -86,13 +83,8 @@ void traverse_parse(node* cur){
 
 }
 int main(){
-
-	/*#ifndef ONLINE_JUDGE
-    freopen("input_x.txt","r",stdin);
-    freopen("output_x.txt","w",stdout);
-    #endif*/
-
-	postfix="pqp~>V~r^";
-	node* root=make_parse_tree(postfix);
+	
+	string postfix="pqp~>V~r^";
+	node* root=postfix_to_parse_tree(postfix);
 	traverse_parse(root);
 }
