@@ -76,13 +76,21 @@ void traverse_parse(node* cur){
 	node* left=cur->left_child;
 	node* right=cur->right_child;
 
+	bool isatom=!(left==NULL && right==NULL);
+	if(isatom)cout<<'(';
     traverse_parse(right);
     cout<<cur->val;
 	traverse_parse(left);
+	if(isatom)cout<<')';
 	
 
 }
 int main(){
+
+	/*#ifndef ONLINE_JUDGE
+    freopen("input_x.txt","r",stdin);
+    freopen("output_x.txt","w",stdout);
+    #endif*/
 
 	postfix="pqp~>V~r^";
 	node* root=make_parse_tree(postfix);
