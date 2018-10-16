@@ -151,7 +151,7 @@ void traverse_parse(node* cur){
     cout<<cur->val;
 	traverse_parse(left);
 	if(isatom)cout<<')';
-
+}
 
 int main()
 {
