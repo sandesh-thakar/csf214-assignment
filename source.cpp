@@ -4,7 +4,9 @@
 #include <map>
 using namespace std;
 
-string infix_to_postfix(string infix)  // Function to convert infix expression to postfix expression
+
+//Infix propositional logic expression to postfix propositional logic expression
+string infix_to_postfix(string infix)  
 {
 	int precedence_index[infix.length()];
 	
@@ -68,7 +70,90 @@ string infix_to_postfix(string infix)  // Function to convert infix expression t
 }
 
 
+//Postfix propositional logic expression to rooted binary parse tree
+struct node{
+	struct node* parent;
+	char val;
+	struct node* left_child;
+	struct node* right_child;
+};
+
+struct node* newNode(char val) {
+  struct node* node=(struct node*)malloc(sizeof(struct node)); 
+
+  node->val=val; 
+  node->left_child=NULL; 
+  node->right_child=NULL; 
+  return(node); 
+} 
+
+struct node* postfix_to_parse_tree(string postfix){
+
+	stack<node*>st;
+
+	int n=postfix.size();
+
+	for(int i=0;i<n;i++){
+		char ch=postfix[i];
+		node* cur=newNode(ch);
+
+		//unary operator
+		if(ch=='~'){
+
+			node* left=st.top();
+			st.pop();
+			left->parent=cur;
+
+			cur->left_child=left;
+			st.push(cur);
+		}
+
+		//binary operator
+		else if(ch=='^' || ch=='V' || ch=='>'){
+
+			node* left=st.top();
+			st.pop();
+			left->parent=cur;
+
+			node* right=st.top();
+			st.pop();
+			right->parent=cur;
+
+			cur->left_child=left;
+			cur->right_child=right;
+			st.push(cur);
+		}
+
+		//propositional atom
+		else{
+			st.push(cur);
+		}
+	}
+
+	node* root = st.top();
+	return root;
+}
+
+
+//In-order traversal of rooted binary parse tree
+void traverse_parse(node* cur){
+
+	if(cur==NULL){
+		return;
+	}
+
+	node* left=cur->left_child;
+	node* right=cur->right_child;
+
+	bool isatom=!(left==NULL && right==NULL);
+	if(isatom)cout<<'(';
+    traverse_parse(right);
+    cout<<cur->val;
+	traverse_parse(left);
+	if(isatom)cout<<')';
+
+
 int main()
 {
-	cout<<infix_to_postfix("(~(pV(q>(~p)))^r)");
+	
 }
