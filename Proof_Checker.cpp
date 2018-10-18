@@ -4,6 +4,12 @@ using namespace std;
 
 bool and_intro(string lines[], int line1, int line2, int calling_line) // for checking and introduction
 {
+	/* In And Introduction:
+		lines[] = the set of previous lines in the proof (without the rules)
+		line1 = the line number of the LHS of the ^ which is to be introduced
+		line2 = the line number of the RHS of the ^ which is to be introduced
+		calling_line = the current line from where the rule is called
+	*/
 	if(lines[calling_line].length()!=lines[line1].length() + lines[line2].length() +3)
 		return false;
 	if(lines[calling_line][0]!='('||lines[calling_line][lines[calling_line].length()-1]!=')')
@@ -21,8 +27,14 @@ bool and_intro(string lines[], int line1, int line2, int calling_line) // for ch
 	return true;
 }
 
-bool and_elim(string lines[], int type, int ref_line, int calling_line) // for checking and elimination
+bool and_elim(string lines[], int type, int ref_line, int calling_line)
 {
+	/* In And Elimination:
+		lines[] = the set of previous lines in the proof (without the rules)
+		type = or introduction 1 or 2
+		ref_line = The line on which and elimination is being applied
+		calling_line = the current line from where the rule is called
+	*/
 	if(lines[ref_line].length()<lines[calling_line].length()+4)
 		return false;
 	if(lines[ref_line][0]!='('||lines[ref_line][lines[ref_line].length()-1]!=')')
@@ -49,15 +61,41 @@ bool and_elim(string lines[], int type, int ref_line, int calling_line) // for c
 	}
 }
 
-bool or_intro(string lines[], int type, int ref_line, int calling_line);
-/* In Or Introduction:
-	lines[] = the set of previous lines in the proof (without the rules)
-	type = or introduction 1 or 2
-	ref_line = The line on which or introduction is being applied
-	calling_line = the current line from where the rule is called
-*/
+bool or_intro(string lines[], int type, int ref_line, int calling_line)
+{
+	/*In Or Introduction:
+		lines[] = the set of previous lines in the proof (without the rules)
+		type = or introduction 1 or 2
+		ref_line = The line on which or introduction is being applied
+		calling_line = the current line from where the rule is called
+	*/
+	if(lines[ref_line].length()+4>lines[calling_line].length())
+		return false;
+	if(lines[calling_line][0]!='('||lines[calling_line][lines[calling_line].length()-1]!=')')
+		return false;
+	if(type==1)
+	{
+		string seq=lines[ref_line];
+		string cmp=lines[calling_line].substr(1,seq.length());
+		if(seq.compare(cmp)!=0)
+			return false;
+		if(lines[calling_line][seq.length()+1]!='V')
+			return false;
+		return true;
+	}
+	else
+	{
+		string seq=lines[ref_line];
+		string cmp=lines[calling_line].substr(lines[calling_line].length()-seq.length()-1,seq.length());
+		if(seq.compare(cmp)!=0)
+			return false;
+		if(lines[calling_line][lines[calling_line].length()-seq.length()-2]!='V')
+			return false;
+		return true;
+	}
+}
 
-bool implies_elim(string lines[],int ref_line,int calling_line); 
+bool implies_elim(string lines[],int ref_line,int calling_line);
 /* In Implication Elimination:
 	lines[] = the set of previous lines in the proof (without the rules)
 	ref_line = The line on which implication is being applied
@@ -88,7 +126,7 @@ bool is_valid_proof(int no_of_lines) // The interface function for testing the e
 		string rule = line.substr(0,rule_end);
 		//cerr << rule_end << "\n";
 		lines[i] = rule;
-		if(line[rule_end+1] == 'P')		
+		if(line[rule_end+1] == 'P')
 			continue;
 		else if(line[rule_end+1] == '^')
 		{
@@ -119,7 +157,7 @@ bool is_valid_proof(int no_of_lines) // The interface function for testing the e
 					valid = and_elim(lines, type, ref_line, i);
 			}
 		}
-		/*else if(line[rule_end+1] == 'V')
+		else if(line[rule_end+1] == 'V')
 		{
 			int type = line[rule_end+3] - '0';
 			int ref_line = line[rule_end+5] - '0';
@@ -131,7 +169,7 @@ bool is_valid_proof(int no_of_lines) // The interface function for testing the e
 			else
 				valid = or_intro(lines, type, ref_line, i);
 		}
-		else if(line[rule_end+1] == '>')
+		/*else if(line[rule_end+1] == '>')
 		{
 			int ref_line = line[rule_end+4] - '0';
 			if(ref_line>=i)
@@ -151,16 +189,16 @@ bool is_valid_proof(int no_of_lines) // The interface function for testing the e
 
 int main()
 {
-    #ifndef ONLINE_JUDGE
+    /*#ifndef ONLINE_JUDGE
         // for getting input from input.txt
         freopen("input.txt", "r", stdin);
         // for writing output to output.txt
         freopen("output.txt", "w", stdout);
-    #endif
+    #endif*/
     int n;
     cin >> n;
     if(is_valid_proof(n))
     	cout << "Valid Proof\n";
     else
     	cout << "Invalid Proof\n";
-}  
+}
