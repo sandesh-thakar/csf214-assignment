@@ -95,12 +95,26 @@ bool or_intro(string lines[], int type, int ref_line, int calling_line)
 	}
 }
 
-bool implies_elim(string lines[],int ref_line,int calling_line);
+bool implies_elim(string lines[],int line1,int line2,int calling_line)
+{
 /* In Implication Elimination:
 	lines[] = the set of previous lines in the proof (without the rules)
-	ref_line = The line on which implication is being applied
+	line1 = 
+	line2 = 
 	calling_line = the current line from where the rule is called
 */
+	string phi=lines[line1];
+	string phi_implies_psi=lines[line2];
+	string psi=lines[calling_line];
+
+	string test="("+phi+">"+psi+")";
+
+	if(phi_implies_psi.compare(test)==0)
+		return true;
+
+	else 
+		return false;
+}
 
 bool is_valid_proof(int no_of_lines) // The interface function for testing the entire proof
 {
