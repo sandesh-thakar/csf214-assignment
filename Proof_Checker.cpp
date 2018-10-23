@@ -103,11 +103,14 @@ bool implies_elim(string lines[],int line1,int line2,int calling_line)
 	line2 = 
 	calling_line = the current line from where the rule is called
 */
-	string phi=lines[line1];
-	string phi_implies_psi=lines[line2];
+	
+	string phi_implies_psi=lines[line1];
+	string phi=lines[line2];
 	string psi=lines[calling_line];
 
 	string test="("+phi+">"+psi+")";
+	
+	
 
 	if(phi_implies_psi.compare(test)==0)
 		return true;
@@ -183,17 +186,20 @@ bool is_valid_proof(int no_of_lines) // The interface function for testing the e
 			else
 				valid = or_intro(lines, type, ref_line, i);
 		}
-		/*else if(line[rule_end+1] == '>')
+		else if(line[rule_end+1] == '>')
 		{
-			int ref_line = line[rule_end+4] - '0';
-			if(ref_line>=i)
+		    
+		    
+			int ref_line1 = line[rule_end+4] - '0';
+			int ref_line2 = line[rule_end+6] - '0';
+			if(ref_line1>=i || ref_line2>=i)
 			{
 				valid = false;
 				continue;
 			}
 			else
-				valid = implies_elim(lines, ref_line, i)
-		}*/
+				valid = implies_elim(lines, ref_line1, ref_line2, i);
+		}
 	}
 	if(valid)
 		return true;

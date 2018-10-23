@@ -1,0 +1,114 @@
+\hypertarget{class_inorder_traversal}{}\section{Inorder\+Traversal Class Reference}
+\label{class_inorder_traversal}\index{Inorder\+Traversal@{Inorder\+Traversal}}
+
+
+Contains the functions to convert postfix expression to rooted binary parse tree and a funtion to traverse the parse tree.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_inorder_traversal_1_1node}{node}}
+\begin{DoxyCompactList}\small\item\em struct to represent a node of the parse tree \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static struct \mbox{\hyperlink{struct_inorder_traversal_1_1node}{node}} $\ast$ \mbox{\hyperlink{class_inorder_traversal_afdc83589caa4e0b0fe266cd147ed80c4}{new\+Node}} (char val)
+\begin{DoxyCompactList}\small\item\em Intializes a node with a value. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_inorder_traversal_a0997a41c18ddf565f5f460446ef3c8a2}{postfix\+\_\+to\+\_\+parse\+\_\+tree}} (string postfix)
+\begin{DoxyCompactList}\small\item\em Converts postfix propostional logic expression to rooted binary parse tree and then calls the traversal function. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_inorder_traversal_a9027f549ca60732409dbe4387785e0a4}{traverse\+\_\+parse}} (\mbox{\hyperlink{struct_inorder_traversal_1_1node}{node}} $\ast$cur)
+\begin{DoxyCompactList}\small\item\em Prints the in-\/order traversal of the parse tree. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains the functions to convert postfix expression to rooted binary parse tree and a funtion to traverse the parse tree. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_inorder_traversal_afdc83589caa4e0b0fe266cd147ed80c4}\label{class_inorder_traversal_afdc83589caa4e0b0fe266cd147ed80c4}} 
+\index{Inorder\+Traversal@{Inorder\+Traversal}!new\+Node@{new\+Node}}
+\index{new\+Node@{new\+Node}!Inorder\+Traversal@{Inorder\+Traversal}}
+\subsubsection{\texorpdfstring{new\+Node()}{newNode()}}
+{\footnotesize\ttfamily static struct \mbox{\hyperlink{struct_inorder_traversal_1_1node}{node}}$\ast$ Inorder\+Traversal\+::new\+Node (\begin{DoxyParamCaption}\item[{char}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Intializes a node with a value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & value with which the node is to be initialized \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+node initialized with the value 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_inorder_traversal_afdc83589caa4e0b0fe266cd147ed80c4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_inorder_traversal_a0997a41c18ddf565f5f460446ef3c8a2}\label{class_inorder_traversal_a0997a41c18ddf565f5f460446ef3c8a2}} 
+\index{Inorder\+Traversal@{Inorder\+Traversal}!postfix\+\_\+to\+\_\+parse\+\_\+tree@{postfix\+\_\+to\+\_\+parse\+\_\+tree}}
+\index{postfix\+\_\+to\+\_\+parse\+\_\+tree@{postfix\+\_\+to\+\_\+parse\+\_\+tree}!Inorder\+Traversal@{Inorder\+Traversal}}
+\subsubsection{\texorpdfstring{postfix\+\_\+to\+\_\+parse\+\_\+tree()}{postfix\_to\_parse\_tree()}}
+{\footnotesize\ttfamily static void Inorder\+Traversal\+::postfix\+\_\+to\+\_\+parse\+\_\+tree (\begin{DoxyParamCaption}\item[{string}]{postfix }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Converts postfix propostional logic expression to rooted binary parse tree and then calls the traversal function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em postfix} & the postfix propositional logic expression \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_inorder_traversal_a0997a41c18ddf565f5f460446ef3c8a2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{class_inorder_traversal_a0997a41c18ddf565f5f460446ef3c8a2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_inorder_traversal_a9027f549ca60732409dbe4387785e0a4}\label{class_inorder_traversal_a9027f549ca60732409dbe4387785e0a4}} 
+\index{Inorder\+Traversal@{Inorder\+Traversal}!traverse\+\_\+parse@{traverse\+\_\+parse}}
+\index{traverse\+\_\+parse@{traverse\+\_\+parse}!Inorder\+Traversal@{Inorder\+Traversal}}
+\subsubsection{\texorpdfstring{traverse\+\_\+parse()}{traverse\_parse()}}
+{\footnotesize\ttfamily static void Inorder\+Traversal\+::traverse\+\_\+parse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_inorder_traversal_1_1node}{node}} $\ast$}]{cur }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Prints the in-\/order traversal of the parse tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cur} & the root of the parse tree \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_inorder_traversal_a9027f549ca60732409dbe4387785e0a4_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_inorder_traversal_8cpp}{Inorder\+Traversal.\+cpp}}\end{DoxyCompactItemize}
