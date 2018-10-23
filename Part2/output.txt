@@ -1,0 +1,9 @@
+Welcome to the Proof Checker!
+
+Would you like to check a proof? Enter y/n:
+Enter number of lines:
+Enter all 5 lines of the proof:
+Valid Proof
+Would you like to check another proof?
+Enter y/n:
+Thanks for using our proof checker!
