@@ -3,6 +3,8 @@
 
 using namespace std;
 
+/**Proof Checker project
+ */
 int main()
 {
 	#ifndef ONLINE_JUDGE
@@ -10,29 +12,31 @@ int main()
 		freopen("output.txt","w",stdout);
 	#endif
 	bool ch=true;
-	do
+	cout << "Welcome to the Proof Checker!\n\nWould you like to check a proof? Enter y/n:\n";
+	char x;
+	cin >> x;
+	if(x!='y')
+		ch=false;
+	while(ch)
 	{
-		cout << "Welcome to the Proof Checker!\n\nWould you like to check a proof? Enter y/n:\n";
-		char x;
-		cin >> x;
-		if(x!='y')
-		{
-			ch=false;
-			break;
-		}
+		
 		int no_of_lines; 
+		cout << "\n";
 		cout << "Enter number of lines:\n";
 		cin >> no_of_lines;
 		Proof p(no_of_lines);
 		cout << "Enter all " << no_of_lines << " lines of the proof:\n";
+		cout << "\n";
 		if(p.check())
 			cout << "Valid Proof\n";
 		else
 			cout << "Invalid Proof\n";
+		cout << "\n";
 		cout << "Would you like to check another proof?\nEnter y/n:\n";
 		cin >> x;
 		if(x!='y')
 			ch=false;
-	} while (ch);	
+	}	
+	cout << "\n";
 	cout << "Thanks for using our proof checker!";
 }
